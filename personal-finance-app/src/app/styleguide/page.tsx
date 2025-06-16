@@ -1,6 +1,8 @@
 const Styleguide = ()=>{
     return(
-        <div>hello</div>
+        <main>
+            <a href="sidebar">Sidebar</a>
+        </main>
     )
 }
 
