@@ -1,6 +1,9 @@
+
+import Sidebar from "@/components/sidebar";
+
 const StyleguideSidebar = () => {
     return(
-        <div>Sidebar</div>
+        <Sidebar />
     )
 }
 
