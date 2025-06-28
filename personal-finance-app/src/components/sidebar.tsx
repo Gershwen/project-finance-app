@@ -1,30 +1,37 @@
 "use client"
 import { useState } from 'react';
+import Logo from '@/assets/svg/Logo.svg';
+import LogoSm from '@/assets/svg/fbsm.svg';
+import Image from 'next/image';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <div className={`h-screen flex`}>
-      {/* Sidebar */}
       <div
-        className={`rounded-r-lg transition-all duration-300 bg-gray-800 text-white ${
-          isCollapsed ? 'w-16' : 'w-64'
+        className={`rounded-r-lg transition-all duration-300 bg-gray-900 text-white ${
+          isCollapsed ? 'w-20' : 'w-64'
         } flex flex-col`}
       >
-        <div className="flex items-center justify-between p-4">
-          <span className={`text-lg font-bold ${isCollapsed ? 'hidden' : 'block'}`}>
-            My App
+        <div className="flex justify-center py-10 px-8">
+          <span className={`${isCollapsed ? 'hidden' : 'block relative w-40 h-10'}`}>
+            <Image
+             src={Logo} 
+             alt="Logo" 
+             fill
+             />
           </span>
-          {/* <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className="text-white"
-          >
-            {isCollapsed ? '>' : '<'}
-          </button> */}
+          <span className={`${!isCollapsed ? 'hidden' : 'block relative w-4 h-6'}`}>
+            <Image
+             src={LogoSm} 
+             alt="Logo" 
+             fill
+             />
+          </span>
         </div>
 
-        {/* Sidebar items */}
+
         <nav className="flex flex-col gap-2 p-4">
           {[
             { label: 'Overview', icon: '' },
@@ -50,7 +57,6 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* Content area */}
       <div className="flex-1 p-4">
         <h1 className="text-xl font-semibold">Main Content</h1>
       </div>
