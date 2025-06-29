@@ -8,6 +8,7 @@ import TransactionsIcon from './icons/Transactions';
 import BudgetsIcon from './icons/Budgets';
 import PotsIcon from './icons/Pots';
 import RecurringBillsIcon from './icons/Recurringbills';
+import ArrowFlatLinesIcon from './icons/ArrowFlatLines';
 
 const navItems = [
   { label: "Overview", icon: HomeIcon },
@@ -29,7 +30,7 @@ const Sidebar = () => {
         } flex flex-col`}
       >
 
-        <div className="flex justify-center py-10 px-8">
+        <div className={`flex ${isCollapsed ? 'justify-center' : '' } py-10 px-8`}>
           <span className={`${isCollapsed ? "hidden" : "block relative w-40 h-10"}`}>
             <Image src={Logo} alt="Logo" fill />
           </span>
@@ -37,8 +38,8 @@ const Sidebar = () => {
             <Image src={LogoSm} alt="Logo" fill />
           </span>
         </div>
-
-        <nav className="flex flex-col gap-2 p-4">
+<div className='flex flex-col justify-between h-full'>
+        <nav className="flex flex-col gap-2 py-4 pr-4">
           {navItems.map((item, index) => {
             const isActive = index === activeIndex;
             const Icon = item.icon;
@@ -47,13 +48,13 @@ const Sidebar = () => {
               <div
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`group flex items-center gap-2 p-2 rounded cursor-pointer transition-colors ${
+                className={`group flex items-center gap-2 ${isCollapsed ? 'p-2' :'py-4 px-8'}  rounded-e-lg cursor-pointer transition-colors ${
                   isActive ? isCollapsed ? '' : "bg-beige-100 text-gray-900" : "hover:bg-gray-700 text-gray-300"
                 }`}
               >
                 {Icon && (
                   <Icon
-                    className={`w-5 h-5 transition-colors ${
+                    className={`${isCollapsed ? 'mx-auto' : ''} w-5 h-5 transition-colors ${
                       isActive
                         ? "text-green"
                         : "text-gray-300 group-hover:text-white"
@@ -64,7 +65,7 @@ const Sidebar = () => {
                 )}
                 {!isCollapsed && (
                   <span
-                    className={`transition-colors ${
+                    className={`transition-colors font-bold ${
                       isActive
                         ? "text-gray-900"
                         : "text-gray-300 group-hover:text-white"
@@ -76,11 +77,16 @@ const Sidebar = () => {
               </div>
             );
           })}
-
-          <button onClick={() => setIsCollapsed(!isCollapsed)} className="mt-4 p-2 text-left">
-            chevL { !isCollapsed && <span>Minimize Menu</span> }
-          </button>
         </nav>
+        <button onClick={() => setIsCollapsed(!isCollapsed)} className="flex gap-4 cursor-pointer align-middle group mb-12 mt-4 py-4 px-8 text-left">
+                  <ArrowFlatLinesIcon
+                    className={`${isCollapsed ? 'mx-auto rotate-180' : ''} w-5 h-5 transition-colors text-gray-300 group-hover:text-white`}
+                    width="24"
+                    height="24"
+                  /> 
+                  { !isCollapsed && <span className='font-bold text-gray-300 group-hover:text-white'>Minimize Menu</span> }
+        </button>
+        </div>
       </div>
 
       <div className="flex-1 p-4">
