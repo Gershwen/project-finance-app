@@ -78,7 +78,7 @@ const Sidebar = () => {
             );
           })}
         </nav>
-        <button onClick={() => setIsCollapsed(!isCollapsed)} className="flex gap-4 cursor-pointer align-middle group mb-12 mt-4 py-4 px-8 text-left">
+        <button aria-label="Minimize Menu" onClick={() => setIsCollapsed(!isCollapsed)} className="flex gap-4 cursor-pointer align-middle group mb-12 mt-4 py-4 px-8 text-left">
                   <ArrowFlatLinesIcon
                     className={`${isCollapsed ? 'mx-auto rotate-180' : ''} w-5 h-5 transition-colors text-gray-300 group-hover:text-white`}
                     width="24"
