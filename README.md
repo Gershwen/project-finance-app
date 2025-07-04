@@ -1,1 +1,10 @@
-# project-finance-app under contruction in develop branch
+
+# project-finance-app
+
+# Tech used
+React
+Tailwind
+TypeScript
+Redux
+
+
