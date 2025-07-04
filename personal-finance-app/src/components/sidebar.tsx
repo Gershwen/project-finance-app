@@ -23,11 +23,11 @@ const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0); // Default active is "Overview"
 
   return (
-    <div className="h-screen flex">
+    <div className="h-screen flex flex-col lg:flex-row">
       <div
         className={`rounded-r-lg transition-all duration-300 bg-gray-900 text-white ${
           isCollapsed ? "w-20" : "w-64"
-        } flex flex-col`}
+        } hidden lg:flex flex-col`}
       >
 
         <div className={`flex ${isCollapsed ? 'justify-center' : '' } py-10 px-8`}>
@@ -48,10 +48,11 @@ const Sidebar = () => {
               <div
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`group flex items-center gap-2 ${isCollapsed ? 'p-2' :'py-4 px-8'}  rounded-e-lg cursor-pointer transition-colors ${
+                className={`relative group flex items-center gap-2 ${isCollapsed ? 'p-4' :'py-4 px-8'}  rounded-e-lg cursor-pointer transition-colors ${
                   isActive ? isCollapsed ? '' : "bg-beige-100 text-gray-900" : "hover:bg-gray-700 text-gray-300"
                 }`}
               >
+              {isActive ? isCollapsed ? null : <div className='absolute left-0 h-full w-2 bg-green'></div> : null}
                 {Icon && (
                   <Icon
                     className={`${isCollapsed ? 'mx-auto' : ''} w-5 h-5 transition-colors ${
@@ -91,6 +92,27 @@ const Sidebar = () => {
 
       <div className="flex-1 p-4">
         <h1 className="text-xl font-semibold">Main Content</h1>
+      </div>
+
+      {/* tablet */}
+      <div className='justify-between flex lg:hidden px-10 pt-2 bg-grey-900 rounded-se-xl rounded-ss-xl'>
+          {navItems.map((item, index) => {
+            const isActive = index === activeIndex;
+            const Icon = item.icon;
+            return (
+              <div
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`relative py-2 px-3 rounded-se-lg rounded-ss-lg flex flex-col items-center cursor-pointer transition-colors ${
+                  activeIndex === index ? "text-green bg-beige-100" : "text-gray-300 hover:text-white"
+                }`}
+              >
+              <Icon className="mb-2  w-6 h-6" />
+              <div className={`hidden sm:block font-bold text-grey-300 ${activeIndex === index ? "text-grey-900": ''}`}>{item.label}</div>
+              {isActive ? isCollapsed ? null : <div className='absolute bottom-0 h-2 w-full bg-green'></div> : null}
+              </div>
+            );
+          })}
       </div>
     </div>
   );

@@ -22,3 +22,5 @@ describe('Sidebar', () => {
     expect(toggleBtn).toHaveClass('flex gap-4 cursor-pointer align-middle group mb-12 mt-4 py-4 px-8 text-left');
   });
 });
+
+
