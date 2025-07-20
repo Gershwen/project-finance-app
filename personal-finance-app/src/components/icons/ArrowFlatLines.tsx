@@ -2,7 +2,7 @@ import React from "react";
 
 type IconProps = React.SVGProps<SVGSVGElement>;
 
-const ArrowFlatLinesIcon = ({ className,width, height, ...props }: IconProps) => (
+const ArrowFlatLinesIcon = ({ className, width, height, ...props }: IconProps) => (
 
 <svg 
 width={width} 
